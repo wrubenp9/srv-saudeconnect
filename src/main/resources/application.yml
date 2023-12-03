@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: srv-saudeconnect
+    description: srv-saudeconnect
+  datasource:
+    url: jdbc:mysql://localhost:3306/saudeconnectDB?createDatabaseIfNotExist=true
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+#    show_sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+
+endpoint:
+  noAuth: >
+    /api/v1/register, 
+    /api/v1/auth
+  swagger: >
+    /v3/api-docs/**,
+    /v3/api-docs.yml,
+    /swagger-ui,
+    /swagger-ui.html
+
+server:
+  port: 8090

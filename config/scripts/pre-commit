@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "-x-x-x-x-x- $(git symbolic-ref --short HEAD) -x-x-x-x-x-"
+
+if [ "$(git symbolic-ref --short HEAD)" == "main" ]; then
+    echo "You cannot make commits directly to the main branch..."
+    exit 1
+fi
+
+echo "====== Running build pre-commit ======"
+
+./gradlew spotlessApply
+
+./gradlew clean build
+
+status=$?
+
+git stash pop -q
+
+echo "====== Done with build pre-commit ======"
+
+exit $status

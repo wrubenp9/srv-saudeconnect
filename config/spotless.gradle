@@ -1,0 +1,10 @@
+spotless {
+    java {
+        target '**/*.java'
+        targetExclude('**/AppMicroserviceApplication.*')
+        palantirJavaFormat()
+        importOrder('com|jakarta|io|lombok|org', 'java|javax', 'static')
+        removeUnusedImports()
+        formatAnnotations()
+    }
+}
