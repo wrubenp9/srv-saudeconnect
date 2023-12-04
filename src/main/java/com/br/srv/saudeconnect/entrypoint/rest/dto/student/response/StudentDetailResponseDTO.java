@@ -26,5 +26,5 @@ public class StudentDetailResponseDTO {
     private AddressResponseDTO address;
     private ContactResponseDTO contact;
     private AccountResponseDTO account;
-    private List<GoalResponseDTO> students;
+    private List<GoalResponseDTO> Goals;
 }
