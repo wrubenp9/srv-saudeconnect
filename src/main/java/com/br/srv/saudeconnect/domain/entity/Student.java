@@ -24,5 +24,5 @@ public class Student {
     private Address address;
     private Contact contact;
     private Account account;
-    private List<Goal> students;
+    private List<Goal> goals;
 }
