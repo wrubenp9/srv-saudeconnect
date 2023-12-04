@@ -35,9 +35,6 @@ public class AuthFilterService extends OncePerRequestFilter {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String BEARER_PREFIX = "Bearer ";
 
-    public AuthFilterService() {
-    }
-
     @Override
     protected void doFilterInternal(
             @NonNull final HttpServletRequest request,
