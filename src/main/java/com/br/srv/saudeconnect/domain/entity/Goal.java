@@ -17,5 +17,4 @@ public class Goal {
     private String createdAt;
     private String updatedAt;
     private SchoolEntity school;
-    private List<Student> students;
 }
