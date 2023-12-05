@@ -1,6 +1,5 @@
 package com.br.srv.saudeconnect.domain.usecase.professional.implementartion;
 
-import com.br.srv.saudeconnect.auth.core.repository.AccountRepository;
 import com.br.srv.saudeconnect.dataprovider.repository.ProfessionalRepository;
 import com.br.srv.saudeconnect.domain.usecase.professional.contract.DeleteProfessionalUseCase;
 import jakarta.transaction.Transactional;
@@ -11,11 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DeleteProfessionalUseCaseImpl implements DeleteProfessionalUseCase {
 
-    private final AccountRepository accountRepository;
+    private final ProfessionalRepository professionalRepository;
 
     @Override
     @Transactional
     public void execute(String accountId) {
-        accountRepository.deleteById(accountId);
+        professionalRepository.deleteByAccount_AccountId(accountId);
     }
 }
