@@ -63,4 +63,8 @@ public class AccountService {
 
         return accountRepository.save(newAccount.build());
     }
+
+    public void deleteAccount(final String accountId){
+        accountRepository.deleteById(accountId);
+    }
 }
