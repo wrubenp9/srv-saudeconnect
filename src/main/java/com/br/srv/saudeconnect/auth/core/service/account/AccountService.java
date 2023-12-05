@@ -13,6 +13,7 @@ import com.br.srv.saudeconnect.enums.ExceptionEnum;
 import com.br.srv.saudeconnect.enums.RoleEnum;
 import com.br.srv.saudeconnect.util.DateUtil;
 import com.br.srv.saudeconnect.util.IdUtil;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -64,7 +65,12 @@ public class AccountService {
         return accountRepository.save(newAccount.build());
     }
 
-    public void deleteAccount(final String accountId){
-        accountRepository.deleteById(accountId);
+    @Transactional
+    public void deleteAccount(final String accountId) {
+        if (accountRepository.existsById(accountId)) {
+            throw new CustomException(ExceptionEnum.USER_NOT_FOUND);
+        }
+
+        accountRepository.findById(accountId).ifPresent(accountRepository::delete);
     }
 }
