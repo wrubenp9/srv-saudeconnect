@@ -1,7 +1,6 @@
 package com.br.srv.saudeconnect.domain.usecase.professional.implementartion;
 
 import com.br.srv.saudeconnect.dataprovider.repository.ProfessionalRepository;
-import com.br.srv.saudeconnect.domain.mapper.ProfessionalMapper;
 import com.br.srv.saudeconnect.domain.usecase.professional.contract.DeleteProfessionalUseCase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

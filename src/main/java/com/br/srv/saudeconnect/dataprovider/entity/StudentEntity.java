@@ -63,7 +63,7 @@ public class StudentEntity {
     @JoinColumn(name = "contact_id")
     private ContactEntity contact;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account account;
 }
