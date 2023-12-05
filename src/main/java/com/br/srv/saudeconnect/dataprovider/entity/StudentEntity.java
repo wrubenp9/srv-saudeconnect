@@ -51,15 +51,15 @@ public class StudentEntity {
             inverseJoinColumns = {@JoinColumn(name = "student_id")})
     private List<GoalEntity> goals;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "school_id")
     private SchoolEntity school;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_id")
     private ContactEntity contact;
 

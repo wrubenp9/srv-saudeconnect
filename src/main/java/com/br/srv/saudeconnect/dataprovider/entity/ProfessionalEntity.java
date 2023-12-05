@@ -35,18 +35,18 @@ public class ProfessionalEntity {
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
 
-    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DietEntity> diets;
 
-    @OneToOne
-    @JoinColumn(name = "contact_id")
-    private ContactEntity contact;
-
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "contact_id")
+    private ContactEntity contact;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account account;
 }

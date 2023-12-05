@@ -28,18 +28,19 @@ public class SchoolEntity {
 
     private String schoolName;
 
-    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<GoalEntity> goals;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_id")
     private ContactEntity contact;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account account;
 }
