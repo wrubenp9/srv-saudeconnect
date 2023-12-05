@@ -11,4 +11,6 @@ public interface ProfessionalRepository extends JpaRepository<ProfessionalEntity
     Optional<ProfessionalEntity> findByAccount_AccountId(String accountId);
 
     Optional<ProfessionalEntity> findByFullName(String fullName);
+
+    void deleteByAccount_AccountId(String accountId);
 }

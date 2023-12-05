@@ -27,12 +27,10 @@ public class CreateSchoolUseCaseImpl implements CreateSchoolUseCase {
     @Override
     public void execute(final SchoolCreateRequestDTO request) {
 
-        final Boolean schoolExist =
-                schoolRepository.findBySchoolName(request.getSchoolName()).isEmpty();
         final Boolean accountExist =
                 accountRepository.findByEmail(request.getAccount().getEmail()).isEmpty();
 
-        if (Boolean.TRUE.equals(schoolExist) && Boolean.TRUE.equals(accountExist)) {
+        if (Boolean.TRUE.equals(accountExist)) {
 
             final SchoolEntity schoolEntity = SchoolEntity.builder()
                     .schoolId(IdUtil.generate())

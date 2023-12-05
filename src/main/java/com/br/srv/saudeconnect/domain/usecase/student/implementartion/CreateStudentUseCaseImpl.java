@@ -25,13 +25,11 @@ public class CreateStudentUseCaseImpl implements ICreateStudentUseCase {
 
     @Override
     public void execute(final StudentCreateRequestDTO request) {
-        final Boolean studentExist =
-                studentRepository.findByFullName(request.getFullName()).isEmpty();
 
         final Boolean accountExist =
                 accountRepository.findByEmail(request.getAccount().getEmail()).isEmpty();
 
-        if (Boolean.TRUE.equals(studentExist) && Boolean.TRUE.equals(accountExist)) {
+        if (Boolean.TRUE.equals(accountExist)) {
 
             final StudentEntity studentEntity = StudentEntity.builder()
                     .studentId(IdUtil.generate())

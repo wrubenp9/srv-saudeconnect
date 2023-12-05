@@ -27,13 +27,10 @@ public class CreateProfessionalUseCaseImpl implements CreateProfessionalUseCase 
     @Override
     public void execute(final ProfessionalCreateRequestDTO request) {
 
-        final Boolean studentExist =
-                professionalRepository.findByFullName(request.getFullName()).isEmpty();
-
         final Boolean accountExist =
                 accountRepository.findByEmail(request.getAccount().getEmail()).isEmpty();
 
-        if (Boolean.TRUE.equals(studentExist) && Boolean.TRUE.equals(accountExist)) {
+        if (Boolean.TRUE.equals(accountExist)) {
 
             final ProfessionalEntity professionalEntity = ProfessionalEntity.builder()
                     .professionalId(IdUtil.generate())

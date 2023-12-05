@@ -3,6 +3,7 @@ package com.br.srv.saudeconnect.entrypoint.rest.controller;
 import com.br.srv.saudeconnect.domain.usecase.diet.contract.CreateDietUseCase;
 import com.br.srv.saudeconnect.domain.usecase.diet.contract.FindAllDietUseCase;
 import com.br.srv.saudeconnect.domain.usecase.professional.contract.CreateProfessionalUseCase;
+import com.br.srv.saudeconnect.domain.usecase.professional.contract.DeleteProfessionalUseCase;
 import com.br.srv.saudeconnect.domain.usecase.professional.contract.FindAllProfessionalUseCase;
 import com.br.srv.saudeconnect.domain.usecase.professional.contract.FindProfessionalUseCase;
 import com.br.srv.saudeconnect.entrypoint.rest.dto.diet.request.CreateDietRequestDTO;
@@ -13,6 +14,7 @@ import com.br.srv.saudeconnect.entrypoint.rest.dto.professional.response.Profess
 import com.br.srv.saudeconnect.entrypoint.rest.mapper.RestDietMapper;
 import com.br.srv.saudeconnect.entrypoint.rest.mapper.RestProfessionalMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +34,7 @@ public class ProfessionalController {
     private final CreateProfessionalUseCase createProfessionalUseCase;
     private final FindAllDietUseCase findAllDietUseCase;
     private final CreateDietUseCase createDietUseCase;
+    private final DeleteProfessionalUseCase deleteProfessionalUseCase;
     private final RestProfessionalMapper restProfessionalMapper;
     private final RestDietMapper restDietMapper;
 
@@ -61,5 +64,10 @@ public class ProfessionalController {
     @GetMapping("/{professionalId}/students/{studentId}/diets")
     public List<DietResponseDTO> getAllDiet(@PathVariable String professionalId) {
         return restDietMapper.domainListToDtoList(findAllDietUseCase.execute(professionalId));
+    }
+
+    @DeleteMapping("/{accountId}")
+    public void deleteProfessional(@PathVariable String accountId) {
+        deleteProfessionalUseCase.execute(accountId);
     }
 }

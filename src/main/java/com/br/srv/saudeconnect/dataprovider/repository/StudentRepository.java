@@ -11,4 +11,6 @@ public interface StudentRepository extends JpaRepository<StudentEntity, String> 
     Optional<StudentEntity> findByFullName(String fullName);
 
     Optional<StudentEntity> findByAccount_AccountId(String accountId);
+
+    void deleteByAccount_AccountId(String accountId);
 }

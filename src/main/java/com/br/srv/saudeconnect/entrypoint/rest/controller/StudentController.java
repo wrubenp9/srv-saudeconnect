@@ -4,6 +4,7 @@ import com.br.srv.saudeconnect.domain.entity.Goal;
 import com.br.srv.saudeconnect.domain.usecase.goal.contract.FindGoalByStudentUseCase;
 import com.br.srv.saudeconnect.domain.usecase.goal.contract.LinkStudentIntoGoalUseCase;
 import com.br.srv.saudeconnect.domain.usecase.goal.contract.RemoveGoalByStudentUseCase;
+import com.br.srv.saudeconnect.domain.usecase.student.contract.DeleteStudentUseCase;
 import com.br.srv.saudeconnect.domain.usecase.student.contract.ICreateStudentUseCase;
 import com.br.srv.saudeconnect.domain.usecase.student.contract.IFindAllStudentUseCase;
 import com.br.srv.saudeconnect.domain.usecase.student.contract.IFindStudentUseCase;
@@ -33,6 +34,7 @@ public class StudentController {
     private final IFindAllStudentUseCase findAllStudentUseCase;
     private final IFindStudentUseCase findStudentUseCase;
     private final ICreateStudentUseCase createStudentUseCase;
+    private final DeleteStudentUseCase deleteStudentUseCase;
     private final FindGoalByStudentUseCase findGoalByStudentUseCase;
     private final LinkStudentIntoGoalUseCase linkStudentIntoGoalUseCase;
     private final RemoveGoalByStudentUseCase removeGoalByStudentUseCase;
@@ -68,5 +70,10 @@ public class StudentController {
     @DeleteMapping("/{studentId}/goals/{goalId}")
     public void unlinkStudentFromGoal(@PathVariable String studentId, @PathVariable String goalId) {
         removeGoalByStudentUseCase.execute(studentId, goalId);
+    }
+
+    @DeleteMapping("/{accountId}")
+    public void deleteProfessional(@PathVariable String accountId) {
+        deleteStudentUseCase.execute(accountId);
     }
 }

@@ -4,8 +4,6 @@ import com.br.srv.saudeconnect.dataprovider.entity.SchoolEntity;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Builder
 public class Goal {
